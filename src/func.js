@@ -79,7 +79,21 @@ export function auditRatio(){
     };
 
 
-    export function createSkillBarChart(data) {
+    export function createSkillBarChart() {
+
+      const data = [
+        { type: 'skill_go', amount: 40 },
+        { type: 'skill_algo', amount: 35 },
+        { type: 'skill_go', amount: 45 },
+        { type: 'skill_sql', amount: 25 },
+        { type: 'skill_html', amount: 35 },
+        { type: 'skill_docker', amount: 15 },
+        { type: 'skill_back-end', amount: 35 },
+        { type: 'skill_front-end', amount: 40 },
+        { type: 'skill_sys-admin', amount: 5 },
+        { type: 'skill_go', amount: 47 },
+        { type: 'skill_html', amount: 35 }
+      ];
        // console.log("wwww");
         // Get the unique skill types
         const skillTypes = [...new Set(data.map(d => d.type))];
@@ -134,7 +148,52 @@ export function auditRatio(){
       }
   
 
-     export function timeline(data) {
+     export function timeline() {
+
+      const data = [
+        {
+          "amount": 34375,
+          "type": "xp",
+          "createdAt": "2024-01-21T16:48:57.464043+00:00",
+          "path": "/bahrain/bh-module/lem-in"
+        },
+        {
+          "amount": 76250,
+          "type": "xp",
+          "createdAt": "2024-04-21T20:02:52.592343+00:00",
+          "path": "/bahrain/bh-module/forum"
+        },
+        {
+          "amount": 19100,
+          "type": "xp",
+          "createdAt": "2024-04-30T07:35:48.704432+00:00",
+          "path": "/bahrain/bh-module/image-upload"
+        },
+        {
+          "amount": 10000,
+          "type": "xp",
+          "createdAt": "2024-06-04T09:11:22.838281+00:00",
+          "path": "/bahrain/bh-module/math-skills"
+        },
+        {
+          "amount": 147000,
+          "type": "xp",
+          "createdAt": "2024-06-10T14:13:07.327948+00:00",
+          "path": "/bahrain/bh-module/make-your-game"
+        },
+        {
+          "amount": 19100,
+          "type": "xp",
+          "createdAt": "2024-06-15T07:43:56.520606+00:00",
+          "path": "/bahrain/bh-module/authentication"
+        },
+        {
+          "amount": 19100,
+          "type": "xp",
+          "createdAt": "2024-06-22T13:39:42.462209+00:00",
+          "path": "/bahrain/bh-module/advanced-features"
+        }
+      ];
         console.log("ppp");
         // Set up the SVG container
         const width = 600;
@@ -183,48 +242,3 @@ export function auditRatio(){
           .style("font-size", "16px")
           .text("Path and Amount");
       }
-      const data2 = [
-        {
-          "amount": 34375,
-          "type": "xp",
-          "createdAt": "2024-01-21T16:48:57.464043+00:00",
-          "path": "/bahrain/bh-module/lem-in"
-        },
-        {
-          "amount": 76250,
-          "type": "xp",
-          "createdAt": "2024-04-21T20:02:52.592343+00:00",
-          "path": "/bahrain/bh-module/forum"
-        },
-        {
-          "amount": 19100,
-          "type": "xp",
-          "createdAt": "2024-04-30T07:35:48.704432+00:00",
-          "path": "/bahrain/bh-module/image-upload"
-        },
-        {
-          "amount": 10000,
-          "type": "xp",
-          "createdAt": "2024-06-04T09:11:22.838281+00:00",
-          "path": "/bahrain/bh-module/math-skills"
-        },
-        {
-          "amount": 147000,
-          "type": "xp",
-          "createdAt": "2024-06-10T14:13:07.327948+00:00",
-          "path": "/bahrain/bh-module/make-your-game"
-        },
-        {
-          "amount": 19100,
-          "type": "xp",
-          "createdAt": "2024-06-15T07:43:56.520606+00:00",
-          "path": "/bahrain/bh-module/authentication"
-        },
-        {
-          "amount": 19100,
-          "type": "xp",
-          "createdAt": "2024-06-22T13:39:42.462209+00:00",
-          "path": "/bahrain/bh-module/advanced-features"
-        }
-      ];
-      timeline(data2);
