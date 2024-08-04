@@ -114,8 +114,8 @@ button:focus-visible {
   flex: 1;
   margin: 5px;
   border: 1px solid #ccc;
-  padding: 5px;
-  height: 450px;
+  padding: 20px;
+  height: 850px;
   width:250px;
   display: flex;
   flex-direction: column;

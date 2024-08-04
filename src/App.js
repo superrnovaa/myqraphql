@@ -1,11 +1,12 @@
 import { useState } from 'react';
 import './index.css';
-import {auditRatio, fetchUserData, createSkillBarChart, timeline} from './func';
+import {AuditRatio} from './func';
+import {CreateSkillBarChart} from './Skill';
+import {Timeline} from './TimeLine';
+
 
 
 function App() {
-  const isLoggedIn = sessionStorage.getItem('jwt') !== null; 
-  console.log(isLoggedIn);
   
   const pathname = window.location.pathname;
 
@@ -52,7 +53,6 @@ function LoginForm() {
 
       if (response.ok) {
         const data = await response.json();
-        console.log(data);
         sessionStorage.setItem('jwt', data);
         window.location.href = "/Profile";
       } else {
@@ -105,6 +105,7 @@ function handleLogout() {
 }
 
 function ProfilePage() {
+  console.log("hello");
   const token = sessionStorage.getItem('jwt');
   if (!token) {
     window.location.href = "/login";
@@ -115,26 +116,28 @@ function ProfilePage() {
     <div className="container">
       {/* Navigation Bar */}
       <div className="nav-bar">
-        <div className="nav-link"><a href="/profile">Profile</a></div>
-        <div className="nav-link"><a href="/settings">Settings</a></div>
-        <div className="nav-link"><a href="/notifications">Notifications</a></div>
         <div className="nav-link"><a href="/login" onClick={handleLogout}>Logout</a></div>
       </div>
 
       {/* Body Sections */}
       <div className="profile-body">
         <div className="section">
-          <div className="chart1"></div>
+        <svg className="chart1"></svg>
+          <CreateSkillBarChart/>
           {/* Overview content goes here */}
         </div>
 
         <div className="section">
+        <div className='audit-ratio'></div>
           <svg className="chart"></svg>
+          <AuditRatio/>
           {/* Activity content goes here */}
         </div>
 
         <div className="section">
-          <div className="chart2"></div>
+        <svg className="chart2">
+        </svg>
+          <Timeline/>
           {/* Settings content goes here */}
         </div>
       </div>
@@ -203,31 +206,3 @@ function ProfilePage() {
 // }
 
 
-//timeline
-// query {
-//   user {
-//     login
-//     timeline: transactions(
-// where: {type: {_eq: "xp"}, _and:[
-// {path: {
-//   _nlike: "%/bh-piscine/%"},
-//   _or: [
-//     {
-//       path:{_nlike: "%/piscine-js/%"
-//       }}
-//   ],_and:[{
-//       path:{_nlike: "%/checkpoint/%"
-//   }}]
-    
-  
-
-// }]}
-// ) {
-
-//       amount
-// type
-//       createdAt
-//       path
-//     }
-//   }
-// }
