@@ -11,56 +11,14 @@ export function Timeline() {
         const PieChart = async () => {
             const dataa =   await fetchUserData(query)
             console.log(dataa);
+            const data= dataa.user[0].timeline;
+            data.sort((a, b) => new Date(a.createdAt) - new Date(b.createdAt));
 
-    const data = [
-      {
-        "amount": 34375,
-        "type": "xp",
-        "createdAt": "2024-01-21T16:48:57.464043+00:00",
-        "path": "/bahrain/bh-module/lem-in"
-      },
-      {
-        "amount": 76250,
-        "type": "xp",
-        "createdAt": "2024-04-21T20:02:52.592343+00:00",
-        "path": "/bahrain/bh-module/forum"
-      },
-      {
-        "amount": 19100,
-        "type": "xp",
-        "createdAt": "2024-04-30T07:35:48.704432+00:00",
-        "path": "/bahrain/bh-module/image-upload"
-      },
-      {
-        "amount": 10000,
-        "type": "xp",
-        "createdAt": "2024-06-04T09:11:22.838281+00:00",
-        "path": "/bahrain/bh-module/math-skills"
-      },
-      {
-        "amount": 147000,
-        "type": "xp",
-        "createdAt": "2024-06-10T14:13:07.327948+00:00",
-        "path": "/bahrain/bh-module/make-your-game"
-      },
-      {
-        "amount": 19100,
-        "type": "xp",
-        "createdAt": "2024-06-15T07:43:56.520606+00:00",
-        "path": "/bahrain/bh-module/authentication"
-      },
-      {
-        "amount": 19100,
-        "type": "xp",
-        "createdAt": "2024-06-22T13:39:42.462209+00:00",
-        "path": "/bahrain/bh-module/advanced-features"
-      }
-    ];
       console.log("timeline");
 // Set up the dimensions of the chart
-var width = 300;
-var height = 400;
-var padding = { top: 100, right: 20, bottom: 50, left: 50 };
+var width = 1100;
+var height = 340;
+var padding = { top: 100, right: 100, bottom: 50, left: 50 };
 
 // Create the SVG container
 var svg = d3.select(".chart2")
@@ -151,7 +109,7 @@ where: {type: {_eq: "xp"}, _and:[
   _nlike: "%/bh-piscine/%"},
   _or: [
     {
-      path:{_nlike: "%/piscine-js/%"
+      path:{_nlike: "%/piscine-js%"
       }}
   ],_and:[{
       path:{_nlike: "%/checkpoint/%"

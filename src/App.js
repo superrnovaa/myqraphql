@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import './index.css';
 import {AuditRatio} from './func';
-import {CreateSkillBarChart} from './Skill';
+import {CreateSkillBarChart, Matrices} from './Skill';
 import {Timeline} from './TimeLine';
 
 
@@ -67,13 +67,14 @@ function LoginForm() {
   };
 
   return (
-    <div>
+    <div className='login-page'>
+    <div className='form'>
       <h1>Login</h1>
-      <form onSubmit={handleSubmit}>
+      <form className='register-form' onSubmit={handleSubmit}>
         <label>
-          {isUsernameLogin ? 'Username' : 'Email'}:
           <input
             type="text"
+            placeholder= {isUsernameLogin ? 'Username' : 'Email'}
             name="usernameOrEmail"
             value={credentials.usernameOrEmail}
             onChange={handleInputChange}
@@ -81,10 +82,11 @@ function LoginForm() {
         </label>
         <br />
         <label>
-          Password:
+      
           <input
             type="password"
             name="password"
+            placeholder= "Password"
             value={credentials.password}
             onChange={handleInputChange}
           />
@@ -95,6 +97,7 @@ function LoginForm() {
         </button>
         <button type="submit">Login</button>
       </form>
+      </div>
     </div>
   );
 }
@@ -129,53 +132,30 @@ function ProfilePage() {
 
         <div className="section">
         <div className='audit-ratio'></div>
-          <svg className="chart"></svg>
+          <svg className="hbar1"></svg>
+          <div className='audit-ratio2'></div>
+          <svg className="hbar2"></svg>
           <AuditRatio/>
           {/* Activity content goes here */}
         </div>
 
         <div className="section">
+        <Matrices/>
+        </div>
+      </div>
+      <div className='Timeline'>
         <svg className="chart2">
         </svg>
           <Timeline/>
           {/* Settings content goes here */}
+        
         </div>
-      </div>
     </div>
   );
 }
 
 
 
-// xps
-// query {
-//   transaction_aggregate(
-//     where: {
-//       event: { path: { _eq: "/bahrain/bh-module" } }
-//       type: { _eq: "xp" }
-//     }
-//   ) {
-//     aggregate {
-//       sum {
-//         amount
-//       }
-//     }
-//   }
-// }
-
-//level
-
-// query {
-//   level: transaction(
-//                              limit: 1
-//                              order_by: { amount: desc }
-//                              where: {
-//                                  userId: { _eq: 773 }
-//                                  type: { _eq: "level" }
-//                                  }
-                             
-//                              ) { amount }
-//                          }
 
 
 
@@ -191,18 +171,6 @@ function ProfilePage() {
 //   }
 // }
 
-//skills
 
-// query {
-//   user {
-//       transactions (
-//              where: { type: { _like: "skill_%" }}
-//       )
-//       {
-//           type
-//           amount
-//       }
-//   }
-// }
 
 
