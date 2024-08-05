@@ -19,8 +19,11 @@ export async function fetchUserData(query) {
       } else {
         const errorData = await response.json();
         console.error('Error fetching user data:', errorData);
+        sessionStorage.setItem('jwt', null)
+        window.location.pathname = '/login'
       }
     } catch (error) {
       console.error('Error fetching user data:', error);
     }
   };
+

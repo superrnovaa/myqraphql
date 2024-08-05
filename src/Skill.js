@@ -7,20 +7,20 @@ export function CreateSkillBarChart() {
     useEffect(() => {
         const BarChart = async () => {
             const dataa =   await fetchUserData(query)
-            const idata = dataa.user[0].transactions
-           // console.log(dataa.user[0].transactions);
-           const data = idata.reduce((acc, item) => {
-            const type = item.type.replace("skill_", "");
-            if (["algo", "go", "front-end", "back-end", "js", "prog"].includes(type)) {
-              const existingItem = acc.find(i => i.type === type);
-              if (existingItem) {
-                existingItem.amount += item.amount;
-              } else {
-                acc.push({ type, amount: item.amount });
+            const idata = dataa.user[0].transactions;
+
+            const data = idata.reduce((acc, item) => {
+              const type = item.type.replace("skill_", "");
+              if (["algo", "go", "front-end", "back-end", "js", "prog"].includes(type)) {
+                const existingItem = acc.find(i => i.type === type);
+                if (existingItem) {
+                  existingItem.amount = Math.max(existingItem.amount, item.amount);
+                } else {
+                  acc.push({ type, amount: item.amount });
+                }
               }
-            }
-            return acc;
-          }, []);
+              return acc;
+            }, []);
 
 
 
@@ -28,12 +28,12 @@ export function CreateSkillBarChart() {
       const skillTypes = [...new Set(data.map(d => d.type))];
     
       // Get the maximum value for scaling the chart
-      const maxValue = d3.max(data, d => d.amount);
+     // const maxValue = d3.max(data, d => d.amount);
     
       // Set up the chart dimensions
-const width = 355;
+const width = 350;
 const height = 400;
-const paddingLeft = 40;
+const paddingLeft = 50;
 const paddingBottom = 100;
 
 // Create the SVG container
@@ -52,7 +52,7 @@ const y = d3.scaleLinear()
 
 // Set the domains for the scales
 x.domain(skillTypes);
-y.domain([0, maxValue]);
+y.domain([0, 100]);
 
 // Create the bars
 svg.selectAll('.bar')
@@ -64,6 +64,15 @@ svg.selectAll('.bar')
   .attr('height', d => height - paddingBottom - y(d.amount))
   .attr('y', d => y(d.amount));
 
+  // Add chart title
+svg.append("text")
+.attr("x", width / 2)
+.attr("y", 60 / 2)
+.attr("text-anchor", "middle")
+.style("font-size", "16px")
+.style("font-weight", "bold")
+.text("My Bar Chart");
+
 // Add the x-axis
 svg.append('g')
   .attr('transform', `translate(0, ${height - paddingBottom})`)
@@ -72,8 +81,10 @@ svg.append('g')
 // Add the y-axis
 svg.append('g')
   .attr('transform', `translate(${paddingLeft}, 0)`)
-  .call(d3.axisLeft(y));
-  
+  .call(d3.axisLeft(y)
+  .tickFormat(d => `${(d / 100 * 100)}%`)
+);
+
            }
            BarChart();
 }, []);

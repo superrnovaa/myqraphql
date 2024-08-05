@@ -8,6 +8,11 @@ export function AuditRatio() {
     
 const data =   await fetchUserData(query1)
 console.log(data);
+const usernameElement = document.querySelector('.username');
+
+// Set the text content of the <h1> element
+usernameElement.textContent = `${data.user[0].firstName} ${data.user[0].lastName} Profile`;
+
 
 const userData = {
 totalUp: parseFloat(data.user[0].totalUp),
@@ -27,14 +32,12 @@ const chartContainer = d3.select('.hbar1');
     .attr('class', 'bar-down')
     .attr('width', downWidth)
     .attr('height', '50%')
-    .attr('fill', 'red');
 
   chartContainer.append('rect')
     .attr('class', 'bar-up')
     .attr('x', downWidth)
     .attr('width', upWidth)
     .attr('height', '50%')
-    .attr('fill', 'green');
     // Display the audit ratio
 
 d3.select('.audit-ratio')
@@ -66,14 +69,12 @@ const chartContainer2 = d3.select('.hbar2');
     .attr('class', 'bar-down')
     .attr('width', downWidth2)
     .attr('height', '50%')
-    .attr('fill', 'red');
 
   chartContainer2.append('rect')
     .attr('class', 'bar-up')
     .attr('x', downWidth2)
     .attr('width', upWidth2)
     .attr('height', '50%')
-    .attr('fill', 'green');
     // Display the audit ratio
 
 d3.select('.audit-ratio2')

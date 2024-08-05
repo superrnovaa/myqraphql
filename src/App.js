@@ -2,7 +2,7 @@ import { useState } from 'react';
 import './index.css';
 import {AuditRatio} from './func';
 import {CreateSkillBarChart, Matrices} from './Skill';
-import {Timeline} from './TimeLine';
+import {Timeline, PieChart} from './TimeLine';
 
 
 
@@ -120,10 +120,13 @@ function ProfilePage() {
       {/* Navigation Bar */}
       <div className="nav-bar">
         <div className="nav-link"><a href="/login" onClick={handleLogout}>Logout</a></div>
+        <h3 className='username'></h3>
       </div>
 
       {/* Body Sections */}
       <div className="profile-body">
+
+      <div className='sections'>
         <div className="section">
         <svg className="chart1"></svg>
           <CreateSkillBarChart/>
@@ -143,6 +146,7 @@ function ProfilePage() {
         <Matrices/>
         </div>
       </div>
+      <div className='TimelineAndPieChart'>
       <div className='Timeline'>
         <svg className="chart2">
         </svg>
@@ -150,6 +154,15 @@ function ProfilePage() {
           {/* Settings content goes here */}
         
         </div>
+    
+    <div className='PieChart'>
+        <svg className="chart4">
+        </svg>
+          <PieChart/>
+          {/* Settings content goes here */}
+        </div>
+        </div>
+    </div>
     </div>
   );
 }
