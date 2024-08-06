@@ -71,7 +71,7 @@ svg.append("text")
 .attr("text-anchor", "middle")
 .style("font-size", "16px")
 .style("font-weight", "bold")
-.text("My Bar Chart");
+.text("skills");
 
 // Add the x-axis
 svg.append('g')
@@ -158,7 +158,7 @@ LevelTitle = 'Aspiring developer'
     };
 
 
-    function formatXP(xp) {
+    export function formatXP(xp) {
         if (xp >= 1000000) {
           return `${(xp / 1000000).toFixed(1)}M`;
         } else if (xp >= 1000) {

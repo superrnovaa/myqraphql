@@ -1,6 +1,7 @@
 import * as d3 from 'd3';
 import  { useEffect } from 'react';
 import {fetchUserData} from './query'
+import {formatXP} from './Skill'
 
 export function AuditRatio() {
   useEffect(() => {
@@ -20,7 +21,7 @@ totalDown: parseFloat(data.user[0].totalDown),
 auditRatio: parseFloat(data.user[0].auditRatio)
 };
 
-const totalWidth = 400;
+const totalWidth = 300;
 
 const chartContainer = d3.select('.hbar1');
 
@@ -31,18 +32,26 @@ const chartContainer = d3.select('.hbar1');
   chartContainer.append('rect')
     .attr('class', 'bar-down')
     .attr('width', downWidth)
-    .attr('height', '50%')
 
   chartContainer.append('rect')
     .attr('class', 'bar-up')
     .attr('x', downWidth)
     .attr('width', upWidth)
-    .attr('height', '50%')
     // Display the audit ratio
 
 d3.select('.audit-ratio')
-  .text(`Audit Ratio: ${userData.auditRatio.toFixed(5)}`)
+  .text(`Audit Ratio: ${userData.auditRatio.toFixed(2)}`)
   .style('left', `${downWidth - 50}px`);
+
+  const Up1 = document.querySelector('.Done');
+
+// Set the text content of the <h1> element
+Up1.textContent = `Done: ${formatXP(userData.totalUp)} px`;
+
+const Down1 = document.querySelector('.Received');
+
+// Set the text content of the <h5> element
+Down1.textContent = `Received: ${formatXP(userData.totalDown)} px`;
 
 
 
@@ -78,8 +87,18 @@ const chartContainer2 = d3.select('.hbar2');
     // Display the audit ratio
 
 d3.select('.audit-ratio2')
-  .text(`Audit Ratio: ${auditRatio2.toFixed(5)}`)
+  .text(`Projects PASS and FAIL ratio: ${auditRatio2.toFixed(2)}`)
   .style('left', `${downWidth2 - 50}px`);
+
+  const Up2 = document.querySelector('.Done2');
+
+  // Set the text content of the <h1> element
+  Up2.textContent = `Pass: ${formatXP(totalUp2)}`;
+  
+  const Down2 = document.querySelector('.Received2');
+  
+  // Set the text content of the <h5> element
+  Down2.textContent = `Fail: ${formatXP(totalDown2)}`;
 
     }
 

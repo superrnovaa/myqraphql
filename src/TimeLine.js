@@ -1,7 +1,7 @@
 import * as d3 from 'd3';
 import  { useEffect } from 'react';
 import {fetchUserData} from './query'
-
+import {formatXP} from './Skill'
 
 
 
@@ -15,9 +15,9 @@ export function Timeline() {
   
         console.log("timeline");
         // Set up the dimensions of the chart
-        var width = 740;
+        var width = 600;
         var height = 270;
-        var padding = { top: 80, right: 50, bottom: 100, left: 50 };
+        var padding = { top: 80, right: 120, bottom: 100, left: 50 };
   
         // Create the SVG container
         var svg = d3.select(".chart2")
@@ -112,7 +112,7 @@ export function Timeline() {
           .attr("x", width / 2)
           .attr("y", -40)
           .attr("text-anchor", "middle")
-          .text("Cumulative XP Over Time");
+          .text("progress over time");
       };
       PieChart();
     }, []);
@@ -169,18 +169,24 @@ export function Timeline() {
   .attr("transform", (d) => `translate(0)`)
     .attr('class', 'arcs')
     .style('visibility', 'hidden')
-    .text(d => `${d.data.path.split('/')[3]}: ${(d.data.amount )}`);
+    .text(d => `${d.data.path.split('/')[3]}: ${(formatXP(d.data.amount))} xp`);
+    const ArcInfo = document.querySelector('.Arc-Info');
   
   g.on('mouseover', function(d) {
     d3.select(this).select('.arcs')
-      .style('visibility', 'visible')
+      //.style('visibility', 'visible')
       .style('font-weight', 'bold');
       let value = d3.select(this).select('.arcs').text()
       console.log(value);
+      
+
+// Set the text content of the <h1> element
+ArcInfo.textContent = `${value}`;
   })
   .on('mouseout', function(d) {
     d3.select(this).select('.arcs')
       .style('visibility', 'hidden');
+      ArcInfo.textContent = "";
   });
 
     // Add the label for each data point
@@ -198,7 +204,7 @@ export function Timeline() {
     .attr("y", padding / 2)
     .attr("text-anchor", "middle")
     .style("font-size", "16px")
-    .text("Path and Amount");
+    .text("XP earned by project");
 }
 Piechart();
 }, []);

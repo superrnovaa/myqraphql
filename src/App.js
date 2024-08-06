@@ -136,10 +136,19 @@ function ProfilePage() {
         <div className="section">
         <div className='audit-ratio'></div>
           <svg className="hbar1"></svg>
+          <h5 className='Aratio'>
+            <span className='Done'></span>
+            <span className='Received'></span>
+          </h5>
+
           <div className='audit-ratio2'></div>
           <svg className="hbar2"></svg>
           <AuditRatio/>
           {/* Activity content goes here */}
+          <h5 className='Aratio2'>
+            <span className='Done2'></span>
+            <span className='Received2'></span>
+          </h5>
         </div>
 
         <div className="section">
@@ -160,6 +169,7 @@ function ProfilePage() {
         </svg>
           <PieChart/>
           {/* Settings content goes here */}
+          <h4 className='Arc-Info'></h4>
         </div>
         </div>
     </div>
