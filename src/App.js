@@ -6,18 +6,18 @@ import {Timeline, PieChart} from './TimeLine';
 
 
 
+
 function App() {
   
-  const pathname = window.location.pathname;
-
+  const hashValue = window.location.hash;
+console.log(hashValue);
   return (
     <div className="App">
-      {pathname === '/myqraphql' ? (
+      {hashValue === '#login' ? (
         <LoginForm />
       ) : (
         <ProfilePage />
-      ) }
-      
+      )}
     </div>
   );
 }
@@ -54,7 +54,7 @@ function LoginForm() {
       if (response.ok) {
         const data = await response.json();
         sessionStorage.setItem('jwt', data);
-        window.location.href = "/Profile";
+        window.location.href = "#Profile";
       } else {
         const errorData = await response.json();
         console.error('Login error:', errorData.error);
@@ -104,14 +104,14 @@ function LoginForm() {
 
 function handleLogout() {
   sessionStorage.removeItem('jwt');
-  window.location.href = "/login";
+  window.location.href = "#login";
 }
 
 function ProfilePage() {
   console.log("hello");
   const token = sessionStorage.getItem('jwt');
   if (!token) {
-    window.location.href = "/login";
+    window.location.href = "#login";
     return null;
   }
 
