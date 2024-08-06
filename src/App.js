@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import './index.css';
 import {AuditRatio} from './func';
 import {CreateSkillBarChart, Matrices} from './Skill';
@@ -6,23 +6,35 @@ import {Timeline, PieChart} from './TimeLine';
 
 
 
-
 function App() {
-  
-  const hashValue = window.location.hash;
-console.log(hashValue);
+  const [currentPage, setCurrentPage] = useState(window.location.hash || '#login');
+  const hashvalue = window.location.hash;
+  useEffect(() => {
+    const handleHashChange = () => {
+      console.log("change in #");
+      const hashvalue = window.location.hash;
+      setCurrentPage(hashvalue); 
+      
+    };
+
+    window.addEventListener('hashchange', handleHashChange);
+    return () => {
+      window.removeEventListener('hashchange', handleHashChange);
+    };
+  }, []);
+console.log(currentPage);
   return (
     <div className="App">
-      {hashValue === '#login' ? (
-        <LoginForm />
-      ) : (
+      {currentPage === '#profile' && sessionStorage.getItem('jwt')!= null ? (
         <ProfilePage />
-      )}
+      ) : <LoginForm />}
     </div>
   );
 }
 
 export default App;
+
+
 
 function LoginForm() {
   const [credentials, setCredentials] = useState({
@@ -54,7 +66,7 @@ function LoginForm() {
       if (response.ok) {
         const data = await response.json();
         sessionStorage.setItem('jwt', data);
-        window.location.href = "#Profile";
+        window.location.href = "#profile";
       } else {
         const errorData = await response.json();
         console.error('Login error:', errorData.error);
@@ -119,7 +131,7 @@ function ProfilePage() {
     <div className="container">
       {/* Navigation Bar */}
       <div className="nav-bar">
-        <div className="nav-link"><a href="/login" onClick={handleLogout}>Logout</a></div>
+        <div className="nav-link"><a href="#login" onClick={handleLogout}>Logout</a></div>
         <h3 className='username'></h3>
       </div>
 
