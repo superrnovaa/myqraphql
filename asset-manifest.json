@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/myqraphql/static/css/main.d59458cb.css",
-    "main.js": "/myqraphql/static/js/main.951ebd38.js",
+    "main.css": "/myqraphql/static/css/main.3291585a.css",
+    "main.js": "/myqraphql/static/js/main.6f97ebba.js",
     "static/js/453.714ba195.chunk.js": "/myqraphql/static/js/453.714ba195.chunk.js",
     "index.html": "/myqraphql/index.html",
-    "main.d59458cb.css.map": "/myqraphql/static/css/main.d59458cb.css.map",
-    "main.951ebd38.js.map": "/myqraphql/static/js/main.951ebd38.js.map",
+    "main.3291585a.css.map": "/myqraphql/static/css/main.3291585a.css.map",
+    "main.6f97ebba.js.map": "/myqraphql/static/js/main.6f97ebba.js.map",
     "453.714ba195.chunk.js.map": "/myqraphql/static/js/453.714ba195.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.d59458cb.css",
-    "static/js/main.951ebd38.js"
+    "static/css/main.3291585a.css",
+    "static/js/main.6f97ebba.js"
   ]
 }
