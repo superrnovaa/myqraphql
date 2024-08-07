@@ -114,8 +114,25 @@ const query = `query {
           try {
             const XPdata = await fetchUserData(query1);
             setXPS(parseInt(XPdata.transaction_aggregate.aggregate.sum.amount));
+            const userId = await fetchUserData(query3);
+            console.log(userId);
+            let Id =userId.user[0].id
+
+            const query2 = `query {
+              level: transaction(
+                                         limit: 1
+                                         order_by: { amount: desc }
+                                         where: {
+                                             userId: { _eq: ${Id} }
+                                             type: { _eq: "level" }
+                                             }
+                                         
+                                         ) { amount }
+                                     }
+                                     `;
     
             const Leveldata = await fetchUserData(query2);
+            console.log(Leveldata);
             setLevel(parseInt(Leveldata.level[0].amount));
           } catch (error) {
             console.error('Error fetching data:', error);
@@ -157,17 +174,15 @@ LevelTitle = 'Aspiring developer'
       );
     };
 
-
     export function formatXP(xp) {
-        if (xp >= 1000000) {
-          return `${(xp / 1000000).toFixed(1)}M`;
-        } else if (xp >= 1000) {
-          return `${(xp / 1000).toFixed(1)}k`;
-        } else {
-          return xp.toString();
-        }
+      if (xp >= 1000000) {
+        return `${Math.round(xp / 1000000)}M`;
+      } else if (xp >= 1000) {
+        return `${Math.round(xp / 1000)}k`;
+      } else {
+        return Math.round(xp).toString();
       }
-
+    }
 
 
 //xps
@@ -188,15 +203,13 @@ const query1 = `query {
 
 //level
 
-const query2 = `query {
-  level: transaction(
-                             limit: 1
-                             order_by: { amount: desc }
-                             where: {
-                                 userId: { _eq: 773 }
-                                 type: { _eq: "level" }
-                                 }
-                             
-                             ) { amount }
-                         }
-                         `;
+
+
+const query3 = `
+       
+query {
+  user {
+    id
+  }
+}
+`;

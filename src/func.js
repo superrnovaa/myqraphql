@@ -52,7 +52,7 @@ const chartContainer = d3.select('.hbar1');
     // Display the audit ratio
 
 d3.select('.audit-ratio')
-  .text(`Audit Ratio: ${userData.auditRatio.toFixed(2)}`)
+  .text(`Audit Ratio: ${userData.auditRatio.toFixed(1)}`)
   .style('left', `${downWidth - 50}px`);
 
   const Up1 = document.querySelector('.Done');
@@ -140,7 +140,7 @@ status = "Inactive";
         </div>
       </h3>
     `;
-    if (status == "Active"){
+    if (status === "Active"){
       box.innerHTML += '<h4> You are currently working on:</h4>';
         // Iterate over the data array and add each item as a list item
      objectNames.forEach(item => {
