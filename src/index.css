@@ -31,9 +31,18 @@ width: 100%;
   margin-bottom: 20px;
 }
 
-.title {
-  margin-bottom: 20px;
+.BasicInfo {
+  justify-content: center;
+  align-items: center;
 }
+
+.title {
+
+  margin-bottom: 20px;
+  margin-top: 10px;
+  list-style-type:square;
+}
+
 
 .circle {
   width: 200px;
@@ -57,7 +66,7 @@ width: 100%;
 
 .level-number {
   font-size: 48px;
-  font-weight: bold;
+  font-weight: normal;
 }
 
 .xps-container {
@@ -81,6 +90,7 @@ width: 100%;
 
 .xps-title {
   margin-bottom: 10px;
+  
 }
 
 .xps-value {
@@ -149,7 +159,7 @@ body {
 
   height: 100%;
   width: 100%;  
-  font-family: "Roboto", sans-serif;
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;      
 }
@@ -334,6 +344,8 @@ button:focus-visible {
   height: 300px;
   width: 780px;
 }
+
+
 
 .username {
   font-size: 24px;

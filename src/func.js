@@ -14,6 +14,18 @@ const usernameElement = document.querySelector('.username');
 // Set the text content of the <h1> element
 usernameElement.textContent = `${data.user[0].firstName} ${data.user[0].lastName} Profile`;
 
+const BasicInfo = document.querySelector('.BasicInfo');
+BasicInfo.innerHTML= `<h3 className="title" style="text-align: center;">Basic user identification</h3> <ul style="list-style-type: none;">
+<li style="font-weight: bold;">Username: <span style="color: green; font-weight: normal;">${data.user[0].login}</span></li>
+<li style="font-weight: bold;">National ID: <span style="color: green; font-weight: normal;">${data.user[0].attrs[2]}</span></li>
+<li style="font-weight: bold;">Gender: <span style="color: green; font-weight: normal;">${data.user[0].attrs[3]}</span></li>
+<li style="font-weight: bold;">Email: <span style="color: green; font-weight: normal;">${data.user[0].email}</span></li>
+<li style="font-weight: bold;">Mobile: <span style="color: green; font-weight: normal;">${data.user[0].attrs['Phone']}</span></li>
+<li style="font-weight: bold;">Qualifications: <span style="color: green; font-weight: normal;">${data.user[0].attrs['Degree']}</span></li>
+<li style="font-weight: bold;">Occuption: <span style="color: green; font-weight: normal;">${data.user[0].attrs['jobtitle']}</span></li>
+<li style="font-weight: bold;">Employment: <span style="color: green; font-weight: normal;">${data.user[0].attrs['employment']}</span></li>
+</ul>`;
+//<li>Date of Birth: <span>${formatDate(userData[0].attrs['4'])}</span></li>
 
 const userData = {
 totalUp: parseFloat(data.user[0].totalUp),
@@ -106,6 +118,58 @@ d3.select('.audit-ratio2')
   }, []);
 
 }
+
+export function ProjectInProgress(){
+  useEffect(() => {
+    const InProgress = async () => {
+      let status;
+      const data =   await fetchUserData(query)
+      const objectNames = data.progress.map(item => item.object.name);
+      if (objectNames.length < 1) {
+status = "Inactive";
+      } else{
+        status = "Active";
+      }
+      console.log(data);
+      const box = document.querySelector('.ProjectInProgress');
+      box.innerHTML = `
+      <h3 class="title" style="text-align: center;">
+        You are currently
+        <div style="font-size: 40px; color: green; ">
+          <span >•  ${status}</span>
+        </div>
+      </h3>
+    `;
+    if (status == "Active"){
+      box.innerHTML += '<h4> You are currently working on:</h4>';
+        // Iterate over the data array and add each item as a list item
+     objectNames.forEach(item => {
+      box.innerHTML += `<ul style="list-style-type: square;"><li style="font-size: 20px;">${item}</li></ul>`;
+    });
+  } else {
+    box.innerHTML += '<h3> Start working on new projects !!!</h3>';
+  }
+
+    }
+      InProgress();
+  }, []);
+}
+
+
+//in progress 
+const query = `
+query {
+  progress(
+    where: { isDone: { _eq: false }, object: { type: { _eq: "project" } } }
+  ) {
+    object {
+      name
+    }
+  }
+}
+`;
+
+
 const query1 = `
        
 query {
@@ -117,6 +181,8 @@ query {
     totalUp
     lastName
     firstName
+    email
+    attrs
   }
 }
 `;

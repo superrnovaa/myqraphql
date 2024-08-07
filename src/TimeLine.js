@@ -17,7 +17,7 @@ export function Timeline() {
         // Set up the dimensions of the chart
         var width = 600;
         var height = 270;
-        var padding = { top: 80, right: 120, bottom: 100, left: 50 };
+        var padding = { top: 80, right: 120, bottom: 100, left: 70 };
   
         // Create the SVG container
         var svg = d3.select(".chart2")
@@ -111,6 +111,8 @@ export function Timeline() {
         chartArea.append("text")
           .attr("x", width / 2)
           .attr("y", -40)
+          .style("font-size", "20px")
+          .style("font-weight", "bold")
           .attr("text-anchor", "middle")
           .text("progress over time");
       };
@@ -203,7 +205,8 @@ ArcInfo.textContent = `${value}`;
     .attr("x", width / 2)
     .attr("y", padding / 2)
     .attr("text-anchor", "middle")
-    .style("font-size", "16px")
+    .style("font-size", "20px")
+    .style("font-weight", "bold")
     .text("XP earned by project");
 }
 Piechart();

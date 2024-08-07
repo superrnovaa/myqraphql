@@ -11,14 +11,14 @@ export function CreateSkillBarChart() {
 
             const data = idata.reduce((acc, item) => {
               const type = item.type.replace("skill_", "");
-              if (["algo", "go", "front-end", "back-end", "js", "prog"].includes(type)) {
+             
                 const existingItem = acc.find(i => i.type === type);
                 if (existingItem) {
                   existingItem.amount = Math.max(existingItem.amount, item.amount);
                 } else {
                   acc.push({ type, amount: item.amount });
                 }
-              }
+              
               return acc;
             }, []);
 
@@ -31,9 +31,9 @@ export function CreateSkillBarChart() {
      // const maxValue = d3.max(data, d => d.amount);
     
       // Set up the chart dimensions
-const width = 350;
+const width = 750;
 const height = 400;
-const paddingLeft = 50;
+const paddingLeft = 10;
 const paddingBottom = 100;
 
 // Create the SVG container
@@ -43,7 +43,7 @@ const svg = d3.select('.chart1')
 
 // Create the x-scale
 const x = d3.scaleBand()
-  .range([paddingLeft, width - paddingLeft])
+  .range([paddingLeft+30, width - paddingLeft])
   .padding(0.1);
 
 // Create the y-scale
@@ -69,7 +69,7 @@ svg.append("text")
 .attr("x", width / 2)
 .attr("y", 60 / 2)
 .attr("text-anchor", "middle")
-.style("font-size", "16px")
+.style("font-size", "20px")
 .style("font-weight", "bold")
 .text("skills");
 
@@ -80,7 +80,7 @@ svg.append('g')
 
 // Add the y-axis
 svg.append('g')
-  .attr('transform', `translate(${paddingLeft}, 0)`)
+  .attr('transform', `translate(${paddingLeft+30}, 0)`)
   .call(d3.axisLeft(y)
   .tickFormat(d => `${(d / 100 * 100)}%`)
 );

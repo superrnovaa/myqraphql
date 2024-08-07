@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import './index.css';
-import {AuditRatio} from './func';
+import {AuditRatio, ProjectInProgress} from './func';
 import {CreateSkillBarChart, Matrices} from './Skill';
 import {Timeline, PieChart} from './TimeLine';
 
@@ -139,13 +139,30 @@ function ProfilePage() {
       <div className="profile-body">
 
       <div className='sections'>
+
+      <div className="section">
+        <div className='BasicInfo'>
+        </div>
+        </div>
+
+      <div className="section">
+        <Matrices/>
+        </div>
+
         <div className="section">
+        <div className='ProjectInProgress'>
+        <ProjectInProgress/>
+        </div>
+        </div>
+
+        <div className="Timeline">
         <svg className="chart1"></svg>
           <CreateSkillBarChart/>
           {/* Overview content goes here */}
         </div>
-
+       
         <div className="section">
+
         <div className='audit-ratio'></div>
           <svg className="hbar1"></svg>
           <h5 className='Aratio'>
@@ -163,9 +180,12 @@ function ProfilePage() {
           </h5>
         </div>
 
-        <div className="section">
-        <Matrices/>
-        </div>
+       
+
+       
+
+        
+        
       </div>
       <div className='TimelineAndPieChart'>
       <div className='Timeline'>
@@ -175,14 +195,14 @@ function ProfilePage() {
           {/* Settings content goes here */}
         
         </div>
-    
-    <div className='PieChart'>
+        <div className='PieChart'>
         <svg className="chart4">
         </svg>
           <PieChart/>
           {/* Settings content goes here */}
           <h4 className='Arc-Info'></h4>
         </div>
+    
         </div>
     </div>
     </div>
@@ -194,17 +214,7 @@ function ProfilePage() {
 
 
 
-//in progress 
 
-// query {
-//   progress(
-//     where: { isDone: { _eq: false }, object: { type: { _eq: "project" } } }
-//   ) {
-//     object {
-//       name
-//     }
-//   }
-// }
 
 
 
