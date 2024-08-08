@@ -15,6 +15,9 @@ width: 100%;
 }
 
 
+
+
+
 @import url(https://fonts.googleapis.com/css?family=Roboto:300);
 
 .login-page {
@@ -291,12 +294,16 @@ button:focus-visible {
   border: 1px solid #43A047;
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
   padding: 20px;
-  width: 430px;
   height: 400px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+
+#audit {
+  min-width: 400px;
 }
 
 
@@ -309,19 +316,20 @@ button:focus-visible {
 }
 
 .PieChart {
-  margin-top: 5px;
   flex: 1;
-  width: 400px;
-  min-width: 350px;
-  height: 420px;
   margin: 10px;
-  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+  min-width: 400px;
   border: 1px solid #43A047;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+  padding: 20px;
+  height: 390px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
+
+
 
 .Arc-Info {
   margin: 2px;
@@ -333,16 +341,19 @@ button:focus-visible {
 }
 
 
+
 .Timeline {
-  flex: 1;
+  flex-grow: 1;
+  width: 60%;
+  box-sizing: border-box;
+  overflow:scroll ;
+  height: fit-content;
   margin: 10px;
   padding: 20px;
-  min-width: 780px;
-  padding-bottom: 100px;
+  min-width: 500px;
+  padding-bottom: 10px;
   border: 1px solid #43A047;
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
-  height: 300px;
-  width: 780px;
 }
 
 

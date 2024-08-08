@@ -9,15 +9,13 @@ export function Timeline() {
     useEffect(() => {
       const PieChart = async () => {
         const dataa = await fetchUserData(query);
-        console.log(dataa);
         const data = dataa.user[0].timeline;
         data.sort((a, b) => new Date(a.createdAt) - new Date(b.createdAt));
-  
-        console.log("timeline");
+ 
         // Set up the dimensions of the chart
         var width = 600;
         var height = 270;
-        var padding = { top: 80, right: 120, bottom: 100, left: 70 };
+        var padding = { top: 80, right: 120, bottom: 20, left: 90 };
   
         // Create the SVG container
         var svg = d3.select(".chart2")
@@ -126,7 +124,6 @@ export function Timeline() {
     useEffect(() => {
       const Piechart = async () => {
         const dataa = await fetchUserData(query);
-        console.log(dataa);
         const data = dataa.user[0].timeline;
 
   const width = 350;
@@ -179,7 +176,6 @@ export function Timeline() {
       //.style('visibility', 'visible')
       .style('font-weight', 'bold');
       let value = d3.select(this).select('.arcs').text()
-      console.log(value);
       
 
 // Set the text content of the <h1> element

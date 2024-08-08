@@ -31,10 +31,11 @@ export function CreateSkillBarChart() {
      // const maxValue = d3.max(data, d => d.amount);
     
       // Set up the chart dimensions
-const width = 750;
-const height = 400;
+      
+const width = 700;
+const height = 350;
 const paddingLeft = 10;
-const paddingBottom = 100;
+const paddingBottom = 10;
 
 // Create the SVG container
 const svg = d3.select('.chart1')

@@ -9,9 +9,9 @@ import {Timeline, PieChart} from './TimeLine';
 function App() {
   const [currentPage, setCurrentPage] = useState(window.location.hash || '#login');
   const hashvalue = window.location.hash;
+
   useEffect(() => {
     const handleHashChange = () => {
-      console.log("change in #");
       const hashvalue = window.location.hash;
       setCurrentPage(hashvalue); 
       
@@ -22,7 +22,7 @@ function App() {
       window.removeEventListener('hashchange', handleHashChange);
     };
   }, []);
-console.log(currentPage);
+
   return (
     <div className="App">
       {currentPage === '#profile' && sessionStorage.getItem('jwt')!= null ? (
@@ -120,7 +120,6 @@ function handleLogout() {
 }
 
 function ProfilePage() {
-  console.log("hello");
   const token = sessionStorage.getItem('jwt');
   if (!token) {
     window.location.href = "#login";
@@ -154,14 +153,15 @@ function ProfilePage() {
         <ProjectInProgress/>
         </div>
         </div>
-
+        </div>
+        <div className='TimelineAndPieChart'>
         <div className="Timeline">
         <svg className="chart1"></svg>
           <CreateSkillBarChart/>
           {/* Overview content goes here */}
         </div>
        
-        <div className="section">
+        <div className="section" id='audit'>
 
         <div className='audit-ratio'></div>
           <svg className="hbar1"></svg>
@@ -179,13 +179,7 @@ function ProfilePage() {
             <span className='Received2'></span>
           </h5>
         </div>
-
-       
-
-       
-
-        
-        
+</div>
       </div>
       <div className='TimelineAndPieChart'>
       <div className='Timeline'>
@@ -205,9 +199,9 @@ function ProfilePage() {
     
         </div>
     </div>
-    </div>
   );
 }
+
 
 
 

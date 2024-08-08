@@ -8,7 +8,6 @@ export function AuditRatio() {
     const Auditratio = async () => {
     
 const data =   await fetchUserData(query1)
-console.log(data);
 const usernameElement = document.querySelector('.username');
 
 // Set the text content of the <h1> element
@@ -68,12 +67,10 @@ Down1.textContent = `Received: ${formatXP(userData.totalDown)} px`;
 
 
 const data2 =   await fetchUserData(query2)
-console.log(data2);
 
 const totalDown2= parseFloat(data2.audit_aggregate.aggregate.count);
 
 const data3 =   await fetchUserData(query3)
-console.log(data3);
 
 const totalUp2 = parseFloat(data3.audit_aggregate.aggregate.count);
 
@@ -130,7 +127,6 @@ status = "Inactive";
       } else{
         status = "Active";
       }
-      console.log(data);
       const box = document.querySelector('.ProjectInProgress');
       box.innerHTML = `
       <h3 class="title" style="text-align: center;">
