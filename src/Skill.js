@@ -168,20 +168,21 @@ LevelTitle = 'Aspiring developer'
         <div className='xps-container'>
           <div className='xps'>
             <h3 className="xps-title">Total XP</h3>
-            <span className="xps-value">{formatXP(XPS)}</span>
+            <span className="xps-value">{formatXP(XPS, 0)}</span>
           </div>
         </div>
       </>
       );
     };
 
-    export function formatXP(xp) {
+
+    export function formatXP(xp, decimalPlaces) {
       if (xp >= 1000000) {
-        return `${Math.round(xp / 1000000)}M`;
+        return `${(xp / 1000000).toFixed(decimalPlaces)}M`;
       } else if (xp >= 1000) {
-        return `${Math.round(xp / 1000)}k`;
+        return `${(xp / 1000).toFixed(decimalPlaces)}k`;
       } else {
-        return Math.round(xp).toString();
+        return xp.toFixed(decimalPlaces);
       }
     }
 

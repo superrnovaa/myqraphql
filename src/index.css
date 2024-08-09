@@ -274,17 +274,24 @@ button:focus-visible {
   stroke-width: 2px;
 }
 
-.hbar1, .hbar2 {
-  height: 100px;
+.hbar2 {
+  height: 50px;
 }
-.Aratio, .Aratio2 {
-  margin: 0;
-  margin-bottom: 25px;
+
+
+.hbar1a, .hbar1b{
+  height: 50px;
+}
+
+
+.Done, .Done2, .Received, .Received2 {
+  margin-top: 0;
   font-size: 16px;
-  font-weight: bold;
+  font-weight: normal;
 }
-.Done, .Done2 {
-  margin-right:70px;
+
+.Done2 {
+  margin-right: 40px;
 }
 
 .section {
@@ -387,11 +394,13 @@ button:focus-visible {
 }
 
 .bar-up, .bar-down {
-  height: 50%;
+  height: 100%;
 }
 
 .audit-ratio, .audit-ratio2 {
-  font-size: 14px;
+  margin-top: 15px;
+  margin-bottom: 10px;
+  font-size: 16px;
   font-weight: bold;
 }
 

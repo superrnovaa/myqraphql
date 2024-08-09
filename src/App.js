@@ -164,11 +164,12 @@ function ProfilePage() {
         <div className="section" id='audit'>
 
         <div className='audit-ratio'></div>
-          <svg className="hbar1"></svg>
-          <h5 className='Aratio'>
-            <span className='Done'></span>
-            <span className='Received'></span>
-          </h5>
+       
+          <svg className="hbar1a"></svg>
+          <p className='Done'></p>
+          <svg className="hbar1b"></svg>
+          <p className='Received'></p>
+          
 
           <div className='audit-ratio2'></div>
           <svg className="hbar2"></svg>

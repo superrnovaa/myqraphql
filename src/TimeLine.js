@@ -168,7 +168,7 @@ export function Timeline() {
   .attr("transform", (d) => `translate(0)`)
     .attr('class', 'arcs')
     .style('visibility', 'hidden')
-    .text(d => `${d.data.path.split('/')[3]}: ${(formatXP(d.data.amount))} xp`);
+    .text(d => `${d.data.path.split('/')[3]}: ${(formatXP(d.data.amount, 2))} xp`);
     const ArcInfo = document.querySelector('.Arc-Info');
   
   g.on('mouseover', function(d) {

@@ -33,20 +33,21 @@ auditRatio: parseFloat(data.user[0].auditRatio)
 };
 
 const totalWidth = 300;
+const totalWidth1 = 400;
 
-const chartContainer = d3.select('.hbar1');
+const chartContainera = d3.select('.hbar1a');
+const chartContainerb = d3.select('.hbar1b');
 
-  const upWidth = (userData.totalUp / (userData.totalUp + userData.totalDown)) * totalWidth;
-  const downWidth = (userData.totalDown / (userData.totalUp + userData.totalDown)) * totalWidth;
+  const upWidth = (userData.totalUp / (userData.totalUp + userData.totalDown)) * totalWidth1;
+  const downWidth = (userData.totalDown / (userData.totalUp + userData.totalDown)) * totalWidth1;
 
   // Create the SVG elements
-  chartContainer.append('rect')
+  chartContainera.append('rect')
     .attr('class', 'bar-down')
     .attr('width', downWidth)
 
-  chartContainer.append('rect')
+  chartContainerb.append('rect')
     .attr('class', 'bar-up')
-    .attr('x', downWidth)
     .attr('width', upWidth)
     // Display the audit ratio
 
@@ -57,12 +58,12 @@ d3.select('.audit-ratio')
   const Up1 = document.querySelector('.Done');
 
 // Set the text content of the <h1> element
-Up1.textContent = `Done: ${formatXP(userData.totalUp)} px`;
+Up1.textContent = `Done: ${formatXP(userData.totalUp, 2)} px`;
 
 const Down1 = document.querySelector('.Received');
 
 // Set the text content of the <h5> element
-Down1.textContent = `Received: ${formatXP(userData.totalDown)} px`;
+Down1.textContent = `Received: ${formatXP(userData.totalDown, 2)} px`;
 
 
 
@@ -102,12 +103,12 @@ d3.select('.audit-ratio2')
   const Up2 = document.querySelector('.Done2');
 
   // Set the text content of the <h1> element
-  Up2.textContent = `Pass: ${formatXP(totalUp2)}`;
+  Up2.textContent = `Fail: ${formatXP(totalUp2, 0)}`;
   
   const Down2 = document.querySelector('.Received2');
   
   // Set the text content of the <h5> element
-  Down2.textContent = `Fail: ${formatXP(totalDown2)}`;
+  Down2.textContent = `Pass: ${formatXP(totalDown2,0)}`;
 
     }
 
